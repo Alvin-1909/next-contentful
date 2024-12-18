@@ -1,9 +1,12 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+// next.config.js
+module.exports = {
   reactStrictMode: true,
-  images: {
-    loader: 'custom'
+  webpackDevMiddleware: config => {
+    config.watchOptions = {
+      ...config.watchOptions,
+      aggregateTimeout: 500,
+      poll: 1000
+    }
+    return config
   }
 }
-
-module.exports = nextConfig
